@@ -275,6 +275,9 @@ drop-migrate: ## Drops databases and runs all migrations for the main/test datab
 migrate-no-test: ## Runs all migrations for main database
 	@make exec cmd="php artisan migrate --force"
 
+test: ## Runs all test
+	@make exec cmd="php artisan test"
+
 migrate: ## Runs all migrations for main/test databases
 	@make exec cmd="php artisan migrate --force"
 	@make exec cmd="php artisan migrate --force --env=test"

@@ -7,7 +7,8 @@
         <option value="$PROJECT_DIR$/tools/05_phpinsights/tests" />
         <option value="$PROJECT_DIR$/tools/06_phpmd/tests" />
         <option value="$PROJECT_DIR$/tools/03_ecs/tests" />
-        <option value="$PROJECT_DIR$/tests" />
+        <option value="$PROJECT_DIR$/tests/Unit" />
+        <option value="$PROJECT_DIR$/tests/Feature" />
       </list>
     </option>
   </component>

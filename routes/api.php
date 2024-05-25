@@ -13,22 +13,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Main
+Route::prefix('v1')->group(function () {
 //Authors
-Route::prefix('authors')->group(function () {
-    Route::post('/', \App\Http\Controllers\Api\V1\Author\StoreController::class);
-    Route::get('/', \App\Http\Controllers\Api\V1\Author\IndexController::class);
-    Route::get('/{author}', \App\Http\Controllers\Api\V1\Author\ShowController::class);
-    Route::put('/{author}', \App\Http\Controllers\Api\V1\Author\UpdateController::class);
-    Route::delete('/{author}', \App\Http\Controllers\Api\V1\Author\DeleteController::class);
-});
-
+    Route::prefix('authors')->group(function () {
+        Route::post('/', \App\Http\Controllers\Api\V1\Author\StoreController::class);
+        Route::get('/', \App\Http\Controllers\Api\V1\Author\IndexController::class);
+        Route::get('/{author}', \App\Http\Controllers\Api\V1\Author\ShowController::class);
+        Route::put('/{author}', \App\Http\Controllers\Api\V1\Author\UpdateController::class);
+        Route::delete('/{author}', \App\Http\Controllers\Api\V1\Author\DeleteController::class);
+    });
 
 //Books
-Route::prefix('books')->group(function () {
-    Route::post('/', \App\Http\Controllers\Api\V1\Book\StoreController::class);
-    Route::get('/', \App\Http\Controllers\Api\V1\Book\IndexController::class);
-    Route::get('/{book}', \App\Http\Controllers\Api\V1\Book\ShowController::class);
-    Route::put('/{book}', \App\Http\Controllers\Api\V1\Book\UpdateController::class);
-    Route::delete('/{book}', \App\Http\Controllers\Api\V1\Book\DeleteController::class);
-    Route::get('/search/{author_last_name}', \App\Http\Controllers\Api\V1\Book\SearchController::class);
+    Route::prefix('books')->group(function () {
+        Route::post('/', \App\Http\Controllers\Api\V1\Book\StoreController::class);
+        Route::get('/', \App\Http\Controllers\Api\V1\Book\IndexController::class);
+        Route::get('/{book}', \App\Http\Controllers\Api\V1\Book\ShowController::class);
+        Route::put('/{book}', \App\Http\Controllers\Api\V1\Book\UpdateController::class);
+        Route::delete('/{book}', \App\Http\Controllers\Api\V1\Book\DeleteController::class);
+        Route::get('/search/{author_last_name}', \App\Http\Controllers\Api\V1\Book\SearchController::class);
+    });
 });
+
+

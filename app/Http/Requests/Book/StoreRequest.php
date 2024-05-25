@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Book;
 
+use App\Rules\Year;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreRequest extends FormRequest
@@ -25,7 +26,7 @@ class StoreRequest extends FormRequest
             'title' => 'required|string',
             'description' => 'nullable|string',
             'image' => 'nullable|file|mimes:jpg,png|max:2048',
-            'published_at' => 'required|date',
+            'published_at' => ['required', new Year],
             'authors' => 'required|array',
             'authors.*' => 'exists:authors,id',
         ];

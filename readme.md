@@ -10,6 +10,8 @@ Docker environment required to run Laravel (based on official php and mysql dock
 
 [Source code](https://github.com/systemsdk/docker-nginx-php-laravel.git)
 
+## [Documentation](https://documenter.getpostman.com/view/16837715/2sA3QqgCrM)
+
 ## Requirements
 * Docker version 18.06 or later
 * Docker compose version 1.22 or later
@@ -80,70 +82,13 @@ make seed
 6.Set key for application:
 ```bash
 make key-generate
+make test
 ```
 
 7.In order to use this application, please open in your browser next urls:
 - [http://localhost](http://localhost)
 - [http://localhost:8025 (Mailpit)](http://localhost:8025)
 
-## Setting up STAGING environment locally
-1.You can clone this repository from GitHub or install via composer.
-
-Note: Delete `storage/mysql-data` and `vendor` folder if it is exists.
-
-If you have installed composer and want to install environment via composer you can use next cmd command:
-```bash
-composer create-project systemsdk/docker-nginx-php-laravel example-app
-```
-Note: If you want to change default docker configurations (web_port, etc...) - create uncommitted `.env` file, copy data from `.env.staging`, edit necessary environment variable value.
-
-2.Build, start and install the docker images from your terminal:
-```bash
-make build-staging
-make start-staging
-```
-
-3.Make sure that you have installed migrations:
-```bash
-make migrate-no-test
-```
-
-4.Set key for application:
-```bash
-make key-generate
-```
-
-## Setting up PROD environment locally
-1.You can clone this repository from GitHub or install via composer.
-
-Note: Delete `storage/mysql-data` and `vendor` folder if it is exists.
-
-If you have installed composer and want to install environment via composer you can use next cmd command:
-```bash
-composer create-project systemsdk/docker-nginx-php-laravel example-app
-```
-
-2.Edit `docker-compose-prod.yml` and set necessary user/password for MySQL.
-
-3.Edit `env.prod` and set necessary user/password for MySQL.
-
-Note: If you want to change default docker configurations (web_port, etc...) - create uncommitted `.env` file, copy data from `.env.prod`, edit necessary environment variable value.
-
-4.Build, start and install the docker images from your terminal:
-```bash
-make build-prod
-make start-prod
-```
-
-5.Make sure that you have installed migrations:
-```bash
-make migrate-no-test
-```
-
-6.Set key for application:
-```bash
-make key-generate
-```
 
 ## Getting shell to container
 After application will start (`make start`) and in order to get shell access inside laravel container you can run following command:
@@ -278,17 +223,6 @@ Notes: Please see more commands in Makefile
 * [Testing](docs/testing.md)
 * [IDE PhpStorm configuration](docs/phpstorm.md)
 * [Xdebug configuration](docs/xdebug.md)
-
-## Working on your project
-1. For new feature development, fork `develop` branch into a new branch with one of the two patterns:
-    * `feature/{ticketNo}`
-2. Commit often, and write descriptive commit messages, so its easier to follow steps taken when reviewing.
-3. Push this branch to the repo and create pull request into `develop` to get feedback, with the format `feature/{ticketNo}` - "Short descriptive title of Jira task".
-4. Iterate as needed.
-5. Make sure that "All checks have passed" on CircleCI(or another one in case you are not using CircleCI) and status is green.
-6. When PR is approved, it will be squashed & merged, into `develop` and later merged into `release/{No}` for deployment.
-
-Note: You can find git flow detail example [here](https://danielkummer.github.io/git-flow-cheatsheet).
 
 ## License
 [The MIT License (MIT)](LICENSE)

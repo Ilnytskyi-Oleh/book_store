@@ -16,8 +16,9 @@ return new class extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->string('image')->nullable();
-            $table->date('published_at');
+            $table->year('published_at');
             $table->timestamps();
+            $table->softDeletes();
         });
 
         Schema::create('author_book', function (Blueprint $table) {

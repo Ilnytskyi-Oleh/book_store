@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Book;
 
+use App\Rules\Year;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateRequest extends FormRequest
@@ -22,11 +23,11 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string',
+            'title' => 'nullable|string',
             'description' => 'nullable|string',
             'image' => 'nullable|file|mimes:jpg,png|max:2048',
-            'published_at' => 'required|date',
-            'authors' => 'required|array',
+            'published_at' => ['nullable', new Year],
+            'authors' => 'nullable|array',
             'authors.*' => 'exists:authors,id',
         ];
     }
